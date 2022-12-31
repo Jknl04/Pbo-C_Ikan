@@ -1,0 +1,330 @@
+package AQUARIUM;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+
+public class Aquarium {
+    static int kondisi_badut = 0, kondisi_platy = 0;
+    public static void main (String[] args){
+        Clownfish badut = new Clownfish();
+        Platy pedang = new Platy();
+        
+        //Frame Utama Start
+        JFrame main = new JFrame("AQUARIUM");
+        main.setSize(500,250);
+        main.setLayout(null);
+        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        main.setLocationRelativeTo(null);
+        main.setVisible(true);
+        
+        JLabel background = new JLabel("");
+        background.setBounds(0,0,500,250);
+        background.setIcon(new ImageIcon("bg2.jpg"));
+        
+        
+        JLabel title = new JLabel("AQUARIUM");
+        title.setForeground(Color.white);
+        title.setBounds(210,30,150,30);
+        
+        JButton bermain = new JButton ("START");
+        bermain.setBounds(50, 90, 130, 80);
+        
+        JButton keluar = new JButton("EXIT");
+        keluar.setBounds(300, 90, 130, 80);
+        background.add(title);
+        background.add(bermain);
+        background.add(keluar);
+        main.add(background);
+        //Frame Utama End
+        
+        //Frame Pilihan ikan
+        JFrame option = new JFrame("AQUARIUM");
+        option.setSize(600,250);
+        option.setLayout(null);
+        option.setLocationRelativeTo(null);
+        option.setVisible(false);
+        
+        JLabel bg_option = new JLabel("");
+        bg_option.setBounds(0,0,600,250);
+        bg_option.setIcon(new ImageIcon("bg3.jpg"));
+        
+        JPanel panel_option = new JPanel(new FlowLayout());
+        panel_option.setBounds(0,0,600,35);
+        panel_option.setBackground(Color.black);
+        JLabel title_option = new JLabel("AQUARIUM", JLabel.CENTER);
+        title_option.setFont(new Font("Serif", Font.PLAIN, 15));
+        title_option.setForeground(Color.white);
+        panel_option.add(title_option);
+        
+        JButton platy = new JButton ("Platy Fish");
+        platy.setBounds(50, 90, 130, 80);
+        
+        JButton clown = new JButton("Clown Fish");
+        clown.setBounds(230, 90, 130, 80);
+        
+        JButton exit_option = new JButton("EXIT");
+        exit_option.setBounds(410, 90, 130, 80);
+        
+        bg_option.add(exit_option);
+        bg_option.add(panel_option);
+        bg_option.add(platy);
+        bg_option.add(clown);
+        option.add(bg_option);
+        //Frame Pilihan ikan end
+        
+        //Frame Game Start
+        JFrame game = new JFrame("AQUARIUM");
+        game.setSize(500, 800);
+        game.setLayout(null);
+        game.setLocationRelativeTo(null);
+        
+        JLabel judul = new JLabel ("");
+        judul.setBounds(220, 200, 150, 25);
+        game.add(judul);
+        
+        JLabel icon = new JLabel("");
+        icon.setIcon(new ImageIcon(""));
+        icon.setBounds(90, 45, 300, 150);
+        game.add(icon);
+        
+        JLabel hari = new JLabel ();
+        hari.setBounds(220, 200, 150, 25);
+        game.add(hari);
+        
+        JLabel nama = new JLabel("Nama Ikan: ");
+        nama.setBounds(75, 250, 150, 25);
+        game.add(nama);
+        
+        JLabel nama2 = new JLabel("");
+        nama2.setBounds(300, 250, 100,25);
+        game.add(nama2);
+        
+        JLabel status = new JLabel("Jenis Makan: ");
+        status.setBounds(75, 300, 150, 25);
+        game.add(status);
+        
+        JLabel status2 = new JLabel("");
+        status2.setBounds(300,300,100,25);
+        game.add(status2);
+        
+        JLabel kondisi = new JLabel("Kondisi Kolam: ");
+        kondisi.setBounds(75, 350, 150, 25);
+        game.add(kondisi);
+        
+        JLabel kondisi2 = new JLabel("");
+        kondisi2.setBounds(300,350,100,25);
+        game.add(kondisi2);
+
+        JLabel makan = new JLabel("Status Ikan: ");
+        makan.setBounds(75, 400, 150, 25);
+        game.add(makan);
+        
+        JLabel makan2 = new JLabel("");
+        makan2.setBounds(300,400,100,25);
+        game.add(makan2);
+        
+        JButton kasih = new JButton("Beri Makan");
+        kasih.setBounds(50, 500, 130, 80);
+        game.add(kasih);
+
+        JButton sudah = new JButton("Selesai Minggu ini");
+        sudah.setBounds(300, 500, 130, 80);
+        game.add(sudah);
+        
+        JButton bersih = new JButton("Bersihkan Kolam!");
+        bersih.setBounds(50, 600, 130, 80);
+        game.add(bersih);
+        
+        JButton exit = new JButton("EXIT");
+        exit.setBounds(300,600,130,80);
+        game.add(exit);
+        //Frame Permainan End
+        
+        //Frame Makanan
+        JFrame makanan = new JFrame("AQUARIUM");
+        makanan.setSize(600,250);
+        makanan.setLayout(null);
+        makanan.setLocationRelativeTo(null);
+        makanan.setVisible(false);
+        
+        JLabel makan_option = new JLabel("");
+        makan_option.setBounds(0,0,600,250);
+        makan_option.setIcon(new ImageIcon("bg3.jpg"));
+        
+        JPanel panel_makan = new JPanel(new FlowLayout());
+        panel_makan.setBounds(0,0,600,35);
+        panel_makan.setBackground(Color.black);
+        JLabel title_makan = new JLabel("AQUARIUM", JLabel.CENTER);
+        title_makan.setFont(new Font("Serif", Font.PLAIN, 15));
+        title_makan.setForeground(Color.white);
+        panel_makan.add(title_makan);
+        
+        JButton cacing = new JButton ("Cacing");
+        cacing.setBounds(50, 90, 130, 80);
+        
+        JButton jentik = new JButton("Jentik");
+        jentik.setBounds(230, 90, 130, 80);
+        
+        JButton pelet = new JButton("Pelet");
+        pelet.setBounds(410, 90, 130, 80);
+        
+        makan_option.add(pelet);
+        makan_option.add(panel_makan);
+        makan_option.add(jentik);
+        makan_option.add(cacing);
+        makanan.add(makan_option);
+        //Frame Makanan end
+        
+        //Logic Button
+        //Frame 1
+        bermain.addActionListener((ActionEvent e) ->{
+            main.setVisible(false);
+            option.setVisible(true);
+        });
+        
+        keluar.addActionListener((ActionEvent e) -> {
+            System.exit(0);
+        });
+        //Frame 1
+        
+        //Frame 2
+        platy.addActionListener((ActionEvent e) -> {
+           option.setVisible(false);
+           hari.setText("Minggu ke-" + pedang.minggu);
+           nama2.setText(pedang.nama);
+           status2.setText(pedang.makan);
+           kondisi2.setText(pedang.kolam);
+           makan2.setText(pedang.lapar);
+           icon.setIcon(new ImageIcon("platy.jpg"));
+           game.setVisible(true);
+        });
+        
+        clown.addActionListener((ActionEvent e) ->{
+           option.setVisible(false);
+           hari.setText("Minggu ke-" + badut.minggu);
+           nama2.setText(badut.nama);
+           status2.setText(badut.makan);
+           kondisi2.setText(badut.kolam);
+           makan2.setText(badut.lapar);
+           icon.setIcon(new ImageIcon("clown.jpg"));
+           game.setVisible(true);
+        });
+        //button beri makan
+        kasih.addActionListener((ActionEvent e) ->{
+            makanan.setVisible(true);
+        });
+        
+        exit.addActionListener((ActionEvent e) ->{
+            game.setVisible(false);
+            main.setVisible(true);
+        });
+        //pilih makan
+        cacing.addActionListener((ActionEvent e) ->{
+            String name = nama2.getText();
+            if(name.equals("Clown Fish")){
+                badut.makan = "Cacing";
+                if(kondisi_badut <= 1){
+                    badut.makan();
+                    status2.setText(badut.makan);
+                    kondisi_badut += 1;
+                    makan2.setText(badut.lapar);
+                }else{
+                    badut.makan();
+                }
+            }else if(name.equals("Platy Fish")){
+                pedang.makan = "Cacing";
+                if(kondisi_platy <= 1){
+                    pedang.makan();
+                    status2.setText(pedang.makan);
+                    kondisi_platy += 1;
+                    makan2.setText(pedang.lapar);
+                }else{
+                    pedang.makan();
+                }
+            }
+            makanan.setVisible(false);
+        });
+        
+        jentik.addActionListener((ActionEvent e) ->{
+            String name = nama2.getText();
+            if(name.equals("Clown Fish")){
+                badut.makan = "Jentik";
+                if(kondisi_badut <= 1){
+                    badut.makan();
+                    status2.setText(badut.makan);
+                    kondisi_badut += 1;
+                    makan2.setText(badut.lapar);
+                }else{
+                    badut.makan();
+                }
+            }else if(name.equals("Platy Fish")){
+                pedang.makan = "Jentik";
+                if(kondisi_platy <= 1){
+                    pedang.makan();
+                    status2.setText(pedang.makan);
+                    kondisi_platy += 1;
+                    makan2.setText(pedang.lapar);
+                }else{
+                    pedang.makan();
+                }
+            }
+            makanan.setVisible(false);
+        });
+        
+        pelet.addActionListener((ActionEvent e) ->{
+            String name = nama2.getText();
+            if(name.equals("Clown Fish")){
+                badut.makan = "Pelet";
+                if(kondisi_badut <= 1){
+                    badut.makan();
+                    status2.setText(badut.makan);
+                    kondisi_badut += 1;
+                    makan2.setText(badut.lapar);
+                }else{
+                }
+            }else if(name.equals("Platy Fish")){
+                pedang.makan = "Pelet";
+                if(kondisi_platy <= 1){
+                    pedang.makan();
+                    status2.setText(pedang.makan);
+                    kondisi_platy += 1;
+                    makan2.setText(pedang.lapar);
+                }else{
+                    pedang.makan();
+                }
+            }
+            makanan.setVisible(false); 
+        });
+        //button pilih makan
+        bersih.addActionListener((ActionEvent e) ->{
+            String name = nama2.getText();
+            if(name.equals("Clown Fish")){
+                badut.bersihkan();
+                kondisi2.setText(badut.kolam);
+            }else if(name.equals("Platy Fish")){
+                pedang.bersihkan();
+                kondisi2.setText(pedang.kolam);
+            }
+        });
+        
+        sudah.addActionListener((ActionEvent e) ->{
+            String name = nama2.getText();
+            badut.selesai();
+            pedang.selesai();
+            
+            if(name.equals("Clown Fish")){
+                hari.setText("Minggu ke-"+badut.minggu);
+                kondisi2.setText(badut.kolam);
+                status2.setText(badut.makan);
+                makan2.setText(badut.lapar);
+                
+            }else if(name.equals("Platy Fish")){
+                hari.setText("Minggu ke-" + pedang.minggu);
+                kondisi2.setText(pedang.kolam);
+                status2.setText(pedang.makan);
+                makan2.setText(pedang.lapar);
+            }
+        });
+        //Logic Button
+    }
+}
