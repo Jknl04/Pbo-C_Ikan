@@ -1,0 +1,72 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package AQUARIUM;
+
+/**
+ *
+ * @author erwin
+ */
+public class Ikan {
+    protected String nama, makan, kolam, lapar;
+    protected int minggu = 1, kondisi = 0, kotor = 1;
+    protected double tumbuh, total, tot_temp;
+    
+    public void selesai(){
+        minggu += 1;
+        if(minggu % 2 == 0){
+            total += tot_temp;
+            tot_temp = 0;
+            
+        }
+        kotor += 1;
+        if(kotor >= 2){
+            kolam = "Kotor";
+        }
+        kondisi = 0;
+        makan = "";
+        lapar = "Lapar";
+    }
+    
+    public void makan(){
+        if(makan == "Cacing"){
+            if(kondisi <= 1){
+                tumbuh = 0.5;
+                tot_temp += tumbuh;
+                kondisi += 1;
+                if(kondisi == 2){
+                    lapar = "Kenyang";
+                }
+            }else if(kondisi >= 2){
+                
+            }
+        }else if(makan == "Jentik"){
+            if(kondisi <= 1){
+                tumbuh = 1;
+                tot_temp += tumbuh;
+                kondisi += 1;
+                if(kondisi == 2){
+                    lapar = "Kenyang";
+                }
+            }else if(kondisi >= 2){
+            }
+        }else if(makan == "Pelet"){
+            if(kondisi <= 1){
+                tumbuh = 1.5;
+                tot_temp += tumbuh;
+                kondisi += 1;
+                if(kondisi == 2){
+                    lapar = "Kenyang";
+                }
+            }else if(kondisi >= 2){
+            }
+
+        }
+    }
+    
+    public void bersihkan(){
+        kotor = 0;
+        kolam = "Bersih";
+    }
+}
